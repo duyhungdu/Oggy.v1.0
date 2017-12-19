@@ -1,7 +1,6 @@
 'use strict';
 
 function sliderCtrl($scope) {
-
   $scope.vertical = {
     orientation: 'vertical'
   };
