@@ -974,10 +974,10 @@ angular
         })
         .state('user.signin', {
           url: '/signin',
-          templateUrl: 'views/extras-signin.html',
+          templateUrl: 'views/authentication/login/extras-signin.html',
           resolve: {
             deps: ['$ocLazyLoad', function ($ocLazyLoad) {
-              return $ocLazyLoad.load('scripts/controllers/session.js');
+              return $ocLazyLoad.load('scripts/controllers/authentication/login/session.js');
                     }]
           },
           data: {

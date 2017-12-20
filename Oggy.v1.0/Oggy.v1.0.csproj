@@ -197,7 +197,7 @@
     <Content Include="admin\scripts\controllers\notifications.js" />
     <Content Include="admin\scripts\controllers\nvd3.js" />
     <Content Include="admin\scripts\controllers\rickshaw.js" />
-    <Content Include="admin\scripts\controllers\session.js" />
+    <Content Include="admin\scripts\controllers\authentication\login\session.js" />
     <Content Include="admin\scripts\controllers\slider.js" />
     <Content Include="admin\scripts\controllers\sortable.js" />
     <Content Include="admin\scripts\controllers\table.js" />
@@ -224,8 +224,8 @@
     <Content Include="admin\scripts\extentions\noty-defaults.js" />
     <Content Include="admin\scripts\modules\common.module.js" />
     <Content Include="admin\scripts\modules\configuration.module.js" />
-    <Content Include="admin\scripts\services\apiService.js" />
-    <Content Include="admin\scripts\services\authenticationService.js" />
+    <Content Include="admin\scripts\services\api.service.js" />
+    <Content Include="admin\scripts\services\authentication.service.js" />
     <Content Include="admin\scripts\services\messages.js" />
     <Content Include="admin\styles\animate.css" />
     <Content Include="admin\styles\climacons-font.css" />
@@ -2867,7 +2867,7 @@
     <Content Include="admin\views\extras-lockscreen.html" />
     <Content Include="admin\views\extras-nestable.html" />
     <Content Include="admin\views\extras-search.html" />
-    <Content Include="admin\views\extras-signin.html" />
+    <Content Include="admin\views\authentication\login\extras-signin.html" />
     <Content Include="admin\views\extras-signup.html" />
     <Content Include="admin\views\extras-sortable.html" />
     <Content Include="admin\views\extras-timeline.html" />
