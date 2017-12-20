@@ -1,0 +1,76 @@
+﻿<div class="panel">
+    <div class="panel-heading border">
+        <ol class="breadcrumb mb0 no-padding">
+            <li>
+                <a href="javascript:;">Home</a>
+            </li>
+            <li class="active">Cài đặt</li>
+        </ol>
+    </div>
+    <div class="panel-body">
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped mb0">
+                <thead>
+                    <tr>
+                        <th>Tên cài đặt</th>
+                        <th>Giá trị</th>
+                    </tr>
+                </thead>
+                <!--<tfoot>
+                    <tr>
+                        <th>Rendering engine</th>
+                        <th>Browser</th>
+                    </tr>
+                </tfoot>-->
+                <tbody>
+                    <tr>
+                        <td>Other browsers</td>
+                        <td>All others</td>
+                    </tr>
+                    <tr>
+                        <td>Other browsers</td>
+                        <td>All others</td>
+                    </tr>
+                    <tr>
+                        <td>Other browsers</td>
+                        <td>All others</td>
+                    </tr>
+                    <tr>
+                        <td>Other browsers</td>
+                        <td>All others</td>
+                    </tr>
+                    <tr>
+                        <td>Other browsers</td>
+                        <td>All others</td>
+                    </tr>
+                    <tr>
+                        <td>Other browsers</td>
+                        <td>All others</td>
+                    </tr>
+                    <tr>
+                        <td>Other browsers</td>
+                        <td>All others</td>
+                    </tr>
+                    <tr>
+                        <td>Other browsers</td>
+                        <td>All others</td>
+                    </tr>
+                    <tr>
+                        <td>Other browsers</td>
+                        <td>All others</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="datatable-bottom">
+            <div class="pull-right">
+                <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" boundary-links="true" rotate="false" num-pages="numPages" previous-text="←" next-text="→" first-text="&laquo;" last-text="&raquo;"></pagination>
+            </div>
+        </div>
+        <br />
+        <pre>Page: {{bigCurrentPage}} / {{numPages}}</pre>
+        <br />
+        <p>Pagers</p>
+        <pager total-items="bigTotalItems" ng-model="bigCurrentPage"></pager>
+    </div>
+</div>

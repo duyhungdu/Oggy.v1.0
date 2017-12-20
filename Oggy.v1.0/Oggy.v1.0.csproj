@@ -5,7 +5,7 @@
   <Import Project="..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props" Condition="Exists('..\packages\Microsoft.Net.Compilers.2.1.0\build\Microsoft.Net.Compilers.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
-   <TypeScriptCompileBlocked>True</TypeScriptCompileBlocked>
+    <TypeScriptCompileBlocked>True</TypeScriptCompileBlocked>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>
@@ -222,6 +222,10 @@
     <Content Include="admin\scripts\extentions\lib.js" />
     <Content Include="admin\scripts\extentions\modernizr.js" />
     <Content Include="admin\scripts\extentions\noty-defaults.js" />
+    <Content Include="admin\scripts\modules\common.module.js" />
+    <Content Include="admin\scripts\modules\configuration.module.js" />
+    <Content Include="admin\scripts\services\apiService.js" />
+    <Content Include="admin\scripts\services\authenticationService.js" />
     <Content Include="admin\scripts\services\messages.js" />
     <Content Include="admin\styles\animate.css" />
     <Content Include="admin\styles\climacons-font.css" />
@@ -2851,6 +2855,7 @@
     <Content Include="admin\views\common\quick-launch-panel.html" />
     <Content Include="admin\views\common\session.html" />
     <Content Include="admin\views\common\sidebar-panel.html" />
+    <Content Include="admin\views\configuration\setting\settings.html" />
     <Content Include="admin\views\dashboard.html" />
     <Content Include="admin\views\directives\toggle-offscreen.html" />
     <Content Include="admin\views\docs.html" />
@@ -3804,6 +3809,7 @@
     <Content Include="admin\vendor\wysihtml5x\LICENSE" />
     <Content Include="admin\vendor\wysihtml5x\package.json" />
     <Content Include="admin\vendor\wysihtml5x\README.markdown" />
+    <Content Include="admin\scripts\controllers\configuration\setting\settings.controller.js" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -3831,6 +3837,7 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="admin\scripts\controllers\configuration\status\" />
     <Folder Include="admin\vendor\card\src\coffee\payment\" />
     <Folder Include="admin\vendor\card\src\scss\bourbon\" />
     <Folder Include="admin\vendor\intl-tel-input\region-flags\" />

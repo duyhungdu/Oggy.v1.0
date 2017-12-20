@@ -1,4 +1,4 @@
-<div class="brand">
+﻿<div class="brand">
 
   <!-- logo -->
   <div class="brand-logo">
@@ -479,6 +479,26 @@
     </li>
     <!-- /html version -->
 
+      <!-- configuration -->
+      <li data-ng-class="{open: $state.includes('app.configuration')}">
+          <a href="javascript:;">
+              <i class="fa fa-trophy"></i>
+              <span>Cấu hình</span>
+          </a>
+          <ul class="sub-menu">
+              <li ui-sref-active="active">
+                  <a ui-sref="app.configuration.settings">
+                      <span>Cài đặt chung</span>
+                  </a>
+              </li>
+              <li ui-sref-active="active">
+                  <a ui-sref="app.configuration.statuses">
+                      <span>Trạng thái</span>
+                  </a>
+              </li>
+          </ul>
+      </li>
+      <!-- /configuration -->
   </ul>
 </nav>
 <!-- /main navigation -->
