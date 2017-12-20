@@ -244,12 +244,12 @@ angular
               return $ocLazyLoad.load([
                 {
                   insertBefore: '#load_styles_before',
-                  files: ['vendor/sweetalert/dist/sweetalert.css']
+                  files: ['vendor/sweetalert/lib/sweet-alert.css']
                         },
                 {
                   name: 'oitozero.ngSweetAlert',
                   files: [
-                                'vendor/sweetalert/dist/sweetalert.min.js',
+                                'vendor/sweetalert/lib/sweet-alert.min.js',
                                 'vendor/angular-sweetalert/SweetAlert.min.js'
                             ]
                         }]).then(function () {
