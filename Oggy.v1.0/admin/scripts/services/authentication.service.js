@@ -2,40 +2,51 @@
 
 function authenticationSvc($rootScope, $http, $q, $localStorage) {
     var output = {};
-    var userInfo;
-    var deferred;
-    output.login = function (username, password) {
-        deferred = $q.defer();
-        var data = "grant_type=password&username=" + username + "&password=" + password;
-        $http.post($rootScope.baseUrl + 'token', data, {
-            headers:
-            { 'Content-Type': 'application/x-www-form-urlencoded' }
-        }).then(function (response) {
-            userInfo = {
-                accessToken: response.data.access_token,
-                expires_in: response.data.expires_in,
-                token_type: response.data.token_type,
-                username: username,
-                password: password,
-                email: response.data.email,
-                userId: response.data.userId,
-                phoneNumber: response.data.phoneNumber,
-                avatar: response.data.avatar,
-                googleAccount: response.data.googleAccount,
-            };
-            console.log(userInfo);
-            //  authenticationService.setTokenInfo(userInfo);
-            deferred.resolve(response);
-        }, function (err, status) {
-            // authData.authenticationData.IsAuthenticated = false;
-            // authData.authenticationData.username = "";
-            deferred.resolve(err);
-        });
-        return deferred.promise;
+    var tokenInfo = {};
+    
+
+    var authentication = {
+        isAuthenticated: false,
+        username: ""
+    };
+    output.data = authentication;
+
+    this.init = function () {
+
+        var tokenInfo = $localStorage.tokenInfo;
+        if (tokenInfo) {
+            output.data.isAuthenticated = true;
+            output.data.username = tokenInfo.username;
+            output.data.email = tokenInfo.email;
+            output.data.userId = tokenInfo.userId;
+            output.data.phoneNumber = tokenInfo.phoneNumber;
+            output.data.googleAccount = tokenInfo.googleAccount;
+            output.data.accessToken = tokenInfo.accessToken;
+        }
     }
+    this.init();
+
+    output.setTokenInfo = function (userInfo) {
+        tokenInfo = userInfo;
+        $localStorage.tokenInfo = tokenInfo;
+    }
+    output.getTokenInfo = function () {
+        return tokenInfo;
+    }
+    output.removeTokenInfo = function () {
+        tokenInfo = null;
+        $localStorage.tokenInfo = null;
+        this.denyAuthenticaion();
+    }
+
+    output.denyAuthenticaion = function () {
+        output.data.isAuthenticated = false;
+        output.data.username = "";
+    }
+
     return output;
 }
 
 angular
-    .module('urbanApp')
+    .module('common.module')
     .factory('authenticationSvc', ['$rootScope', '$http', '$q', '$localStorage', authenticationSvc]);

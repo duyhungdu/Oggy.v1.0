@@ -1,17 +1,21 @@
 'use strict';
 
-function sessionCtrl($scope, $state, authenticationSvc) {
+function sessionCtrl($scope, $state, loginSvc) {
     $scope.signin = function () {
-        authenticationSvc.login('duyhungdu@gmail.com', 'DuyHung@6');
+        loginSvc.login('duyhungdu@gmail.com', 'DuyHung@6').then(function () {
+            $state.go('app.dashboard');
+        });
       //  $state.go('user.signin');
     };
 
     $scope.submit = function () {
-        authenticationSvc.login('duyhungdu@gmail.com', 'DuyHung@6');
-      //  $state.go('app.dashboard');
+        loginSvc.login('duyhungdu@gmail.com', 'DuyHung@6').then(function () {
+            $state.go('app.dashboard');
+        });
+        
     };
 }
 
 angular
     .module('urbanApp')
-    .controller('sessionCtrl', ['$scope', '$state', 'authenticationSvc', sessionCtrl]);
+    .controller('sessionCtrl', ['$scope', '$state', 'loginSvc', sessionCtrl]);

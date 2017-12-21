@@ -30,5 +30,5 @@ function apiSvc($http) {
 }
 
 angular
-    .module('urbanApp')
+    .module('common.module')
     .factory('apiSvc', ['$http', apiSvc]);
