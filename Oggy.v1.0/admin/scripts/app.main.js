@@ -5,6 +5,7 @@ angular
     .controller('AppCtrl', ['$scope', '$http', '$localStorage', '$rootScope',
         function AppCtrl($scope, $http, $localStorage, $rootScope) {
             $rootScope.baseUrl = 'http://localhost:88/';
+            $rootScope.signInState = 'user.signin';
             $scope.mobileView = 767;
 
             $scope.app = {

@@ -2,21 +2,46 @@
 
 angular
     .module('urbanApp')
-    .run(['$rootScope', '$state', '$stateParams',
-        function ($rootScope, $state, $stateParams) {
+    .run(['$rootScope', '$state', '$stateParams', 'authenticationSvc',
+        function ($rootScope, $state, $stateParams, authenticationSvc) {
+            $rootScope.$on("$stateChangeStart", function (event, toState, toParams, fromState, fromParams) {
+                if (authenticationSvc.data.isAuthenticated == false && toState.requireAuth == true && toState.name != $rootScope.signInState) {
+                    $state.go($rootScope.signInState);
+                    event.preventDefault();
+                    return;
+                }
+
+            });
+
+            $rootScope.$on("$stateChangeError", function (event, toState, toParams, fromState, fromParams, error) {
+                alert(error);
+                switch (error) {
+
+                    //case Access.UNAUTHORIZED:
+                    //    $state.go("signIn");
+                    //    break;
+
+                    //case Access.FORBIDDEN:
+                    //    $state.go("forbidden");
+                    //    break;
+
+                    //default:
+                    //    $log.warn("$stateChangeError event catched");
+                    //    break;
+
+                }
+            });
+
             $rootScope.$state = $state;
             $rootScope.$stateParams = $stateParams;
             $rootScope.$on('$stateChangeSuccess', function () {
                 window.scrollTo(0, 0);
             });
             FastClick.attach(document.body);
-            
         },
     ])
     .config(['$stateProvider', '$urlRouterProvider',
         function ($stateProvider, $urlRouterProvider) {
-            console.log(authenticationSvc.data);
-            
             // For unmatched routes
             $urlRouterProvider.otherwise('/');
 
@@ -73,13 +98,15 @@ angular
                     template: '<div ui-view></div>',
                     abstract: true,
                     url: '/ui',
+
                 })
                 .state('app.ui.buttons', {
                     url: '/buttons',
                     templateUrl: 'views/ui-buttons.html',
                     data: {
                         title: 'Buttons',
-                    }
+                    },
+                    requireAuth: true
                 })
                 .state('app.ui.directives', {
                     url: '/directives',

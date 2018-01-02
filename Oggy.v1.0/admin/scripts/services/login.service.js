@@ -13,6 +13,7 @@ function loginSvc($rootScope, $http, $q, authenticationSvc) {
         }).then(function (response) {
             userInfo = response.data;
             authenticationSvc.setTokenInfo(userInfo);
+            authenticationSvc.data.isAuthenticated = true;
             deferred.resolve(response);
         }, function (err, status) {
             authenticationSvc.denyAuthentication();

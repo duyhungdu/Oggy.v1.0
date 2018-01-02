@@ -3,7 +3,7 @@
 function authenticationSvc($rootScope, $http, $q, $localStorage) {
     var output = {};
     var tokenInfo = {};
-    
+
 
     var authentication = {
         isAuthenticated: false,
@@ -12,26 +12,29 @@ function authenticationSvc($rootScope, $http, $q, $localStorage) {
     output.data = authentication;
 
     this.init = function () {
-
-        var tokenInfo = $localStorage.tokenInfo;
+        tokenInfo = $localStorage.tokenInfo;
         if (tokenInfo) {
-            output.data.isAuthenticated = true;
-            output.data.username = tokenInfo.username;
-            output.data.email = tokenInfo.email;
-            output.data.userId = tokenInfo.userId;
-            output.data.phoneNumber = tokenInfo.phoneNumber;
-            output.data.googleAccount = tokenInfo.googleAccount;
-            output.data.accessToken = tokenInfo.accessToken;
+            setAuthenticationData(tokenInfo);
         }
     }
     this.init();
 
+    function setAuthenticationData(_tokenInfo) {
+        output.data.isAuthenticated = true;
+        output.data.username = _tokenInfo.username;
+        output.data.email = _tokenInfo.email;
+        output.data.userId = _tokenInfo.userId;
+        output.data.phoneNumber = _tokenInfo.phoneNumber;
+        output.data.googleAccount = _tokenInfo.googleAccount;
+        output.data.accessToken = _tokenInfo.accessToken;
+    }
     output.setTokenInfo = function (userInfo) {
         tokenInfo = userInfo;
         $localStorage.tokenInfo = tokenInfo;
+        setAuthenticationData(tokenInfo);
     }
     output.getTokenInfo = function () {
-        return tokenInfo;
+        return output.data;
     }
     output.removeTokenInfo = function () {
         tokenInfo = null;
@@ -40,8 +43,7 @@ function authenticationSvc($rootScope, $http, $q, $localStorage) {
     }
 
     output.denyAuthenticaion = function () {
-        output.data.isAuthenticated = false;
-        output.data.username = "";
+        output.data = {};
     }
 
     return output;
